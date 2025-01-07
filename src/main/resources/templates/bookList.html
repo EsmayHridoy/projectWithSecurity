@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .book-list {
+            margin: 20px auto;
+            width: 80%;
+            border-collapse: collapse;
+        }
+
+        .book-list th, .book-list td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .book-list th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .book-list tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .book-list tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<header>Available Books</header>
+
+<table class="book-list">
+    <thead>
+    <tr>
+        <th>Book ID</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Count</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Dynamic content starts here -->
+    <tr th:each="book : ${books}">
+        <td th:text="${book.bookId}"></td>
+        <td th:text="${book.bookName}"></td>
+        <td th:text="${book.bookAuthor}"></td>
+        <td th:text="${book.bookPrice}"></td>
+        <td th:text="${book.bookCount}"></td>
+    </tr>
+    <!-- Dynamic content ends here -->
+    </tbody>
+</table>
+
+</body>
+</html>

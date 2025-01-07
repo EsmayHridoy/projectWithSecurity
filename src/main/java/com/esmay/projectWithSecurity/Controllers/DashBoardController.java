@@ -1,6 +1,8 @@
 package com.esmay.projectWithSecurity.Controllers;
 
 
+import com.esmay.projectWithSecurity.Models.Books;
+import com.esmay.projectWithSecurity.Services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +14,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 @Controller
 public class DashBoardController {
@@ -21,6 +24,9 @@ public class DashBoardController {
     @Autowired
     private DataSource dataSource;
 
+
+    @Autowired
+    BookService bookService;
 
     @GetMapping("/profile")
     public String viewProfile(@AuthenticationPrincipal UserDetails userDetails, Model model) {
@@ -56,4 +62,5 @@ public class DashBoardController {
     public String viewAdminProfile(){
         return "adminProfile";
     }
+    
 }

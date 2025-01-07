@@ -6,6 +6,8 @@ import com.esmay.projectWithSecurity.Repository.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookServiceImpl implements BookService{
     @Autowired
@@ -19,5 +21,9 @@ public class BookServiceImpl implements BookService{
         }
         return bookRepo.insertBook(books);
     }
+    public List<Books> getAllBooks() {
+        return bookRepo.findAllBooks();
+    }
+
 
 }

@@ -7,6 +7,8 @@ public class Books {
     private float bookPrice;
     private int bookCount;
 
+    public Books(){};
+
     public Books(int bookId, String bookName, String bookAuthor, float bookPrice, int bookCount) {
         this.bookId = bookId;
         this.bookName = bookName;

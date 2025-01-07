@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class BookRepoImpl implements BookRepo {
@@ -152,6 +154,29 @@ public class BookRepoImpl implements BookRepo {
             e.printStackTrace();
         }
         return flag;
+    }
+
+    public List<Books> findAllBooks() {
+        MysqlConnect mysqlConnect = new MysqlConnect();
+        List<Books> booksList = new ArrayList<>();
+        String QUERY = "SELECT * FROM book_table"; // Fetching all books
+
+        try (PreparedStatement statement = mysqlConnect.connect().prepareStatement(QUERY)) {
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Books book = new Books();
+                book.setBookId(resultSet.getInt("book_id"));
+                book.setBookName(resultSet.getString("book_name"));
+                book.setBookAuthor(resultSet.getString("book_author"));
+                book.setBookPrice(resultSet.getFloat("book_price"));
+                book.setBookCount(resultSet.getInt("book_count"));
+                booksList.add(book);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error while retrieving books: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return booksList;
     }
 
 
