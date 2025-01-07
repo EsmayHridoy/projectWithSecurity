@@ -7,6 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,6 +26,14 @@ public class UserServiceImpl implements UserService {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         return userRepo.insertMember(user);
+    }
+
+    public List<User> getAllUsers() {
+        return userRepo.findAllUsers();
+    }
+
+    public void deleteUser(int id) {
+        userRepo.deleteUser(id);
     }
 }
 

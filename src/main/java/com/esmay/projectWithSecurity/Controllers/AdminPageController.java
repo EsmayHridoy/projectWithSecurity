@@ -2,14 +2,13 @@ package com.esmay.projectWithSecurity.Controllers;
 
 
 import com.esmay.projectWithSecurity.Models.Books;
+import com.esmay.projectWithSecurity.Models.User;
 import com.esmay.projectWithSecurity.Services.BookService;
+import com.esmay.projectWithSecurity.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +17,9 @@ public class AdminPageController {
 
     @Autowired
     BookService bookService;
+    @Autowired
+    UserService userService;
+
 
     @GetMapping("/addBookPage")
     public String redirAddBookPage(){
@@ -32,17 +34,26 @@ public class AdminPageController {
                           @RequestParam("bookCount") int bookCount){
         Books book = new Books(bookId,bookName,bookAuthor,bookPrice,bookCount);
         boolean flag=bookService.addBookDB(book);
-        if(!flag)return "successful";
+        if(!flag)return "operationError";
         return "adminProfile";
     }
 
     @RequestMapping("/unauthorizedException")
     public String unauthorized() {
-        return "unauthorizedException"; // This will map to the Thymeleaf template
+        return "unauthorizedException";
+    }
+
+    @GetMapping("/userList")
+    public String getAllUsers(Model model) {
+        List<User> users = userService.getAllUsers();
+        model.addAttribute("users", users);
+        return "userList";
     }
 
 
-
-
-
+    @PostMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable("id") int id) {
+        userService.deleteUser(id);
+        return "redirect:/userList";
+    }
 }

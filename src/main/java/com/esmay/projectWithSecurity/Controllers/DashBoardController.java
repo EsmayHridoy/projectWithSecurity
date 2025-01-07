@@ -68,7 +68,7 @@ public class DashBoardController {
 
     @PostMapping("/buyBook")
     public String buyBook(@RequestParam("bookId") int bookId){
-        if(!bookService.buyBook(bookId)) return "successful";
+        if(!bookService.buyBook(bookId)) return "operationError";
         return "bookPurchaseSuccessful";
     }
 

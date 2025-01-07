@@ -9,6 +9,8 @@ import javax.swing.plaf.nimbus.State;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class UserRepoImpl implements UserRepo {
@@ -55,4 +57,41 @@ public class UserRepoImpl implements UserRepo {
         return flag;
     }
 
+    public List<User> findAllUsers() {
+        MysqlConnect mysqlConnect = new MysqlConnect();
+        List<User> users = new ArrayList<>();
+        String SQLQ = "SELECT * FROM user_table";
+        try (PreparedStatement Statement = mysqlConnect.connect().prepareStatement(SQLQ)) {
+            ResultSet resultSet = Statement.executeQuery();
+            while (resultSet.next()) {
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setName(resultSet.getString("name"));
+                user.setPassword(resultSet.getString("password"));
+                user.setEmail(resultSet.getString("email"));
+                user.setAddress(resultSet.getString("address"));
+                user.setRole(resultSet.getString("role"));
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
+    public void deleteUser(int id) {
+        MysqlConnect mysqlConnect = new MysqlConnect();
+        String DELETE_QUERY = "DELETE FROM user_table WHERE id = ?";
+        try (PreparedStatement statement = mysqlConnect.connect().prepareStatement(DELETE_QUERY)) {
+            statement.setInt(1, id);
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("User with ID " + id + " deleted successfully.");
+            } else {
+                System.out.println("User with ID " + id + " not found.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

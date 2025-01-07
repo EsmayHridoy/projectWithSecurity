@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/unauthorizedException","/home", "/loginpage", "/registration", "/login", "/logout","/register").permitAll()
+                .antMatchers("/unauthorizedException", "/home", "/loginpage", "/registration", "/login", "/logout","/register").permitAll()
                 .antMatchers("/dashboard","/profile","/buyBook").authenticated()
                 .antMatchers("/AdminMode","/addBookPage","/addBook").hasAuthority("Admin")
                 .and()
