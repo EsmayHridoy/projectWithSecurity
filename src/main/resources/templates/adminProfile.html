@@ -13,7 +13,8 @@
             background-size: cover;
             color: white;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
         }
 
@@ -45,46 +46,14 @@
             background-color: #0097a7;
         }
 
-        .profile-container {
-            background-color: rgba(0, 123, 255, 0.7);
-            padding: 30px;
-            border-radius: 10px;
-            width: 350px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .profile-field {
-            margin-bottom: 15px;
-        }
-
-        .profile-field label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .profile-field input {
-            width: 100%;
-            padding: 8px;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .readonly {
-            background-color: #f0f0f0;
-            cursor: not-allowed;
-        }
-
         .admin-sections {
-            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
             padding: 30px;
-            margin-left: 20px;
+            margin-top: 100px; /* To avoid header overlap */
         }
 
         .admin-sections h2 {
@@ -92,25 +61,38 @@
         }
 
         .admin-sections .section {
+            display: flex;
+            align-items: center;
             background-color: rgba(0, 123, 255, 0.7);
             padding: 20px;
             margin-bottom: 15px;
             border-radius: 10px;
             text-align: center;
             font-size: 18px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .admin-sections .section img {
+            width: 50px; /* Adjust the icon size */
+            height: 50px; /* Adjust the icon size */
+            object-fit: cover;
+            margin-right: 15px; /* Space between image and button */
         }
 
         .admin-sections .section a {
             color: white;
             text-decoration: none;
-            background-color: #00bcd4;
-            padding: 10px;
+            font-size: 20px;
+            background-color: rgba(0, 123, 255, 0.7);
+            padding: 10px 20px;
             border-radius: 5px;
-            display: inline-block;
+            opacity: 0.9;
         }
 
         .admin-sections .section a:hover {
             background-color: #0097a7;
+            opacity: 1;
         }
     </style>
 </head>
@@ -125,16 +107,18 @@
     </form>
 </header>
 
-
 <div class="admin-sections">
     <h2>Admin Sections</h2>
     <div class="section">
+        <img src="/images/addBooks.jpeg" alt="Add Book">
         <a href="/add-book">Add Book</a>
     </div>
     <div class="section">
+        <img src="/images/showUsers.jpg" alt="Show User List">
         <a href="/user-list">Show User List</a>
     </div>
     <div class="section">
+        <img src="/images/userRole.png" alt="Edit User Role">
         <a href="/edit-user-role">Edit User Role</a>
     </div>
 </div>

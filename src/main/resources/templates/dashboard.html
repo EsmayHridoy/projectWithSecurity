@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Homepage</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,49 +14,41 @@
             color: white;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
             min-height: 100vh;
         }
 
-        /* Header styling */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 123, 255, 0.7);
-            padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: white;
-            z-index: 1000;
+            background-color: rgba(0, 123, 255, 0.8); /* Slightly transparent */
+            padding: 20px;
+            width: 100%;
         }
 
-        header a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #00bcd4;
-            margin: 0 10px;
+        h1 {
+            margin: 0;
+            font-size: 2rem;
         }
 
-        header a:hover {
-            background-color: #0097a7;
-        }
-
-        .form-container {
-            background-color: rgba(0, 123, 255, 0.7);
-            padding: 30px;
-            border-radius: 10px;
-            width: 300px;
+        .button-container {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 100px;
+            gap: 10px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            border: 2px solid rgba(0, 123, 255, 0.7); /* Blue border */
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: rgba(0, 123, 255, 0.3); /* Transparent blue */
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            background-color: rgba(0, 123, 255, 0.5); /* Darker blue on hover */
         }
 
         .content {
@@ -79,21 +71,19 @@
             width: 200px;
         }
 
+        .box:hover {
+            transform: scale(1.05);
+        }
+
         .box img {
             width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
         }
 
         .box h2 {
-            font-size: 18px;
-            margin: 0;
-        }
-
-        .box:hover {
-            transform: scale(1.05);
-            background-color: rgba(255, 255, 255, 0.3);
+            margin: 10px 0;
         }
     </style>
 </head>
