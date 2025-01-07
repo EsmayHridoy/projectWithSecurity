@@ -100,7 +100,11 @@
 <body>
 
 <header>
-    <a href="/profile">Profile</a>
+    <form action="/profile" method="GET">
+        <button type="submit" style="background-color: #00bcd4; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+            Profile
+        </button>
+    </form>
     <form action="/logout" method="POST">
         <button type="submit" style="background-color: #00bcd4; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
             Logout
