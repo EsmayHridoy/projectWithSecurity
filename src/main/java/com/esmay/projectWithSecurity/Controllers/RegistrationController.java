@@ -25,6 +25,6 @@ public class RegistrationController {
 
         userService.addUser(user);
 
-        return "LoginPage";
+        return "successful";
     }
 }

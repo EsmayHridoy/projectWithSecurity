@@ -48,7 +48,12 @@ public class DashBoardController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return "profile";  // Return the profile view
+    }
+
+
+    @GetMapping("/AdminMode")
+    public String viewAdminProfile(){
+        return "adminProfile";
     }
 }

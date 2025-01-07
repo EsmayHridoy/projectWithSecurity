@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Admin Profile</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,9 +13,7 @@
             background-size: cover;
             color: white;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             min-height: 100vh;
         }
 
@@ -52,7 +50,6 @@
             padding: 30px;
             border-radius: 10px;
             width: 350px;
-            margin-top: 100px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
@@ -84,19 +81,35 @@
             cursor: not-allowed;
         }
 
-        .update-button {
-            background-color: #00bcd4;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            width: 100%;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
+        .admin-sections {
+            width: 60%;
+            padding: 30px;
+            margin-left: 20px;
         }
 
-        .update-button:hover {
+        .admin-sections h2 {
+            margin-bottom: 30px;
+        }
+
+        .admin-sections .section {
+            background-color: rgba(0, 123, 255, 0.7);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .admin-sections .section a {
+            color: white;
+            text-decoration: none;
+            background-color: #00bcd4;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .admin-sections .section a:hover {
             background-color: #0097a7;
         }
     </style>
@@ -110,35 +123,20 @@
             Logout
         </button>
     </form>
-    <!-- Added Admin Mode Button -->
-    <a href="/AdminMode" class="admin-button" style="background-color: #f39c12;">Admin Mode</a>
 </header>
 
-<div class="profile-container">
-    <h2>User Profile</h2>
-    <form action="/update-profile" method="POST">
-        <div class="profile-field">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" th:value="${name}">
-        </div>
 
-        <div class="profile-field">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" th:value="${email}" class="readonly" readonly>
-        </div>
-
-        <div class="profile-field">
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" th:value="${address}">
-        </div>
-
-        <div class="profile-field">
-            <label for="role">Role:</label>
-            <input type="text" id="role" name="role" th:value="${role}" class="readonly" readonly>
-        </div>
-
-        <button type="submit" class="update-button">Update Profile</button>
-    </form>
+<div class="admin-sections">
+    <h2>Admin Sections</h2>
+    <div class="section">
+        <a href="/add-book">Add Book</a>
+    </div>
+    <div class="section">
+        <a href="/user-list">Show User List</a>
+    </div>
+    <div class="section">
+        <a href="/edit-user-role">Edit User Role</a>
+    </div>
 </div>
 
 </body>

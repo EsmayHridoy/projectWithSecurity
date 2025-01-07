@@ -35,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("SELECT email, password, true AS enabled FROM user_table WHERE email = ?")
-                .authoritiesByUsernameQuery("SELECT name, email, address, role FROM user_table WHERE email = ?");
+                .authoritiesByUsernameQuery("SELECT email, role FROM user_table WHERE email = ?");
     }
 
     @Override
@@ -44,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/home", "/loginpage", "/registration", "/login", "/logout","/register").permitAll()
                 .antMatchers("/dashboard","/profile").authenticated()
+                .antMatchers("/AdminMode").hasAuthority("Admin")
                 .and()
                 .formLogin()
                 .loginPage("/loginpage")
