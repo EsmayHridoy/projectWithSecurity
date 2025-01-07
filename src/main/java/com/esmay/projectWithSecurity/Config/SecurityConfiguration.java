@@ -42,9 +42,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/home", "/loginpage", "/registration", "/login", "/logout","/register").permitAll()
-                .antMatchers("/dashboard","/profile").authenticated()
-                .antMatchers("/AdminMode").hasAuthority("Admin")
+                .antMatchers("/unauthorizedException","/home", "/loginpage", "/registration", "/login", "/logout","/register").permitAll()
+                .antMatchers("/dashboard","/profile","/buyBook").authenticated()
+                .antMatchers("/AdminMode","/addBookPage","/addBook").hasAuthority("Admin")
                 .and()
                 .formLogin()
                 .loginPage("/loginpage")
@@ -57,6 +57,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/home")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
-                .permitAll();
+                .permitAll()
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/unauthorizedException");
     }
 }
