@@ -109,19 +109,36 @@
 
 <div class="admin-sections">
     <h2>Admin Sections</h2>
+
     <div class="section">
         <img src="/images/addBooks.jpeg" alt="Add Book">
-        <a href="/add-book">Add Book</a>
+        <form action="/addBookPage" method="GET">
+            <button type="submit" style="background-color: #00bcd4; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                Add Book
+            </button>
+        </form>
     </div>
+
     <div class="section">
         <img src="/images/showUsers.jpg" alt="Show User List">
-        <a href="/user-list">Show User List</a>
+        <form action="/userList" method="GET">
+            <button type="submit" style="background-color: #00bcd4; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                Show User List
+            </button>
+        </form>
     </div>
+
     <div class="section">
         <img src="/images/userRole.png" alt="Edit User Role">
-        <a href="/edit-user-role">Edit User Role</a>
+        <form action="/editUserRole" method="GET">
+            <button type="submit" style="background-color: #00bcd4; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                Edit User Role
+            </button>
+        </form>
     </div>
+
 </div>
+
 
 </body>
 </html>
