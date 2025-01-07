@@ -24,6 +24,12 @@ public class BookServiceImpl implements BookService{
     public List<Books> getAllBooks() {
         return bookRepo.findAllBooks();
     }
+    public boolean buyBook(int id){
+        boolean flag = bookRepo.UpdateBookCount(id,-1);
+        if(bookRepo.bookCount(id) == 0){
+            bookRepo.bookDelete(id);
+        }
 
-
+        return flag;
+    }
 }

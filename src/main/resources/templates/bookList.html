@@ -45,6 +45,19 @@
         .book-list tr:hover {
             background-color: #f1f1f1;
         }
+
+        button {
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
@@ -59,6 +72,7 @@
         <th>Author</th>
         <th>Price</th>
         <th>Count</th>
+        <th>Action</th> <!-- Added a column for the "Buy Book" button -->
     </tr>
     </thead>
     <tbody>
@@ -69,6 +83,12 @@
         <td th:text="${book.bookAuthor}"></td>
         <td th:text="${book.bookPrice}"></td>
         <td th:text="${book.bookCount}"></td>
+        <td>
+            <form action="/buyBook" method="POST">
+                <input type="hidden" name="bookId" th:value="${book.bookId}" />
+                <button type="submit">Buy Book</button>
+            </form>
+        </td>
     </tr>
     <!-- Dynamic content ends here -->
     </tbody>

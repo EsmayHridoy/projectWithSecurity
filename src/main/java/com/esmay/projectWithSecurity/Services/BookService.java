@@ -11,4 +11,5 @@ public interface BookService {
 
     public boolean addBookDB(Books books);
     public List<Books> getAllBooks();
+    public boolean buyBook(int id);
 }
